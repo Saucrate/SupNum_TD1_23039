@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://example.com/demo/soap/servers"
+           targetNamespace="http://example.com/demo/soap/servers"
+           elementFormDefault="qualified">
+
+    <!-- Type Server -->
+    <xs:complexType name="server">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0"/>
+            <xs:element name="nom" type="xs:string"/>
+            <xs:element name="statut" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Requête : Créer un serveur -->
+    <xs:element name="creerServeurRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nom" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="creerServeurResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="server" type="tns:server"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Requête : Lister tous les serveurs -->
+    <xs:element name="listerTousLesServeursRequest">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="listerTousLesServeursResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="servers" type="tns:server" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Requête : Renommer un serveur -->
+    <xs:element name="renommerServeurRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="nouveauNom" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="renommerServeurResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="server" type="tns:server"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Requête : Récupérer le statut d'un serveur -->
+    <xs:element name="recupererStatutRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="recupererStatutResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="statut" type="xs:boolean"/>
+                <xs:element name="message" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Requête : Démarrer un serveur -->
+    <xs:element name="demarrerServeurRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="demarrerServeurResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="xs:string"/>
+                <xs:element name="server" type="tns:server"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Requête : Arrêter un serveur -->
+    <xs:element name="arreterServeurRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="arreterServeurResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="xs:string"/>
+                <xs:element name="server" type="tns:server"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Requête : Supprimer un serveur -->
+    <xs:element name="supprimerServeurRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="supprimerServeurResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="xs:string"/>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Requête : Récupérer un serveur par ID -->
+    <xs:element name="recupererServeurRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="recupererServeurResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="server" type="tns:server"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Erreur SOAP -->
+    <xs:element name="erreurResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="erreur" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
+

@@ -1,18 +1,13 @@
 package com.example.demo.dto;
 
 import com.example.demo.model.Server;
-import io.swagger.v3.oas.annotations.media.Schema;
 
-@Schema(description = "Réponse de succès pour les opérations")
 public class SuccessResponse {
 
-    @Schema(description = "Message de succès", example = "Serveur démarré avec succès")
     private String message;
 
-    @Schema(description = "Serveur concerné par l'opération")
     private Server serveur;
 
-    @Schema(description = "Identifiant du serveur (pour les opérations de suppression)")
     private Long id;
 
     public SuccessResponse() {

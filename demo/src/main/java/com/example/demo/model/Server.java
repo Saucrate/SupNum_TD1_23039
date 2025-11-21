@@ -1,28 +1,23 @@
 package com.example.demo.model;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "servers")
-@Schema(description = "Représente un serveur dans le data center")
 public class Server {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Schema(description = "Identifiant unique du serveur", example = "1")
     private Long id;
 
     @NotBlank(message = "Le nom du serveur est obligatoire")
     @Column(nullable = false, unique = true)
-    @Schema(description = "Nom du serveur (doit être unique)", example = "Serveur-Web-01", requiredMode = Schema.RequiredMode.REQUIRED)
     private String nom;
 
     @NotNull
     @Column(nullable = false)
-    @Schema(description = "Statut du serveur (true = démarré, false = arrêté)", example = "false")
     private Boolean statut = false; // false = arrêté, true = démarré
 
     // Constructeurs
